@@ -1,0 +1,23 @@
+{
+  "name": "hackerrank_template",
+  "version": "1.0.0",
+  "description": "just a basic template to use with Hacker Rank questions. use this instead of the UI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeyamato/hackerrank_template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikeyamato/hackerrank_template/issues"
+  },
+  "homepage": "https://github.com/mikeyamato/hackerrank_template#readme",
+  "dependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
