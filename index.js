@@ -4,21 +4,37 @@
 |--------------------------------------------------
 */
 
-const answer = question([ 5, 6, 7 ], [ 3, 6, 10 ]); 
+const answer = question('ecde','abc'); 
 
-function question (a, b) {
+function question (a,b) {
 
-	let personA = 0
-    let personB = 0
-    for (let i = 0; i < a.length; i++){
-			if (a[i] > b[i]) {
-				personA += 1
-			} else if (a[i] < b[i]) {
-				personB += 1
-			} 
-    }
-    return [personA, personB]
+	a = a.split('').sort();
+	b = b.split('').sort();
 
+	let hashMapA = {}
+	let hashMapB = {}
+
+	for (let letter of a){
+		hashMapA[letter] = hashMapA[letter]+1 || 1
+	}
+
+	for (let letter of b){
+		hashMapB[letter] = hashMapB[letter]+1 || 1
+	}
+
+	if(Object.keys(hashMapA).length === Object.keys(hashMapB).length){
+		
+	}
+
+	for(let value in hashMapA){
+		console.log('value:', value)
+		console.log('hashMapA[value]:', hashMapA[value])
+		if(hashMapA[value] !== hashMapB[value]){
+			
+		}
+	}
+
+	return hashMapA
 }
 
 console.log('**********************')
@@ -27,69 +43,47 @@ console.log('**********************')
 
 
 /* QUESTION
-Alice and Bob each created one problem for HackerRank. A reviewer rates the two challenges, awarding points on a scale from  to  for three categories: problem clarity, originality, and difficulty.
+Alice is taking a cryptography class and finding anagrams to be very useful. We consider two strings to be anagrams of each other if the first string's letters can be rearranged to form the second string. In other words, both strings must contain the same exact letters in the same exact frequency For example, bacdc and dcbac are anagrams, but bacdc and dcbad are not.
 
-We define the rating for Alice's challenge to be the triplet , and the rating for Bob's challenge to be the triplet .
+Alice decides on an encryption scheme involving two large strings where encryption is dependent on the minimum number of character deletions required to make the two strings anagrams. Can you help her find this number?
 
-Your task is to find their comparison points by comparing  with , with , and  with .
+Given two strings,  and , that may or may not be of the same length, determine the minimum number of character deletions required to make  and  anagrams. Any characters can be deleted from either of the strings.
 
-If , then Alice is awarded  point.
-If , then Bob is awarded  point.
-If , then neither person receives a point.
-Comparison points is the total points a person earned.
-
-Given  and , determine their respective comparison points.
-
-For example, and . For elements , Bob is awarded a point because . For the equal elements and , no points are earned. Finally, for elements ,  so Alice receives a point. Your return array would be  with Alice's score first and Bob's second.
+For example, if  and , we can delete  from string  and  from string  so that both remaining strings are and  which are anagrams.
 
 Function Description
 
-Complete the function compareTriplets in the editor below. It must return an array of two integers, the first being Alice's score and the second being Bob's.
+Complete the makeAnagram function in the editor below. It must return an integer representing the minimum total characters that must be deleted to make the strings anagrams.
 
-compareTriplets has the following parameter(s):
+makeAnagram has the following parameter(s):
 
-a: an array of integers representing Alice's challenge rating
-b: an array of integers representing Bob's challenge rating
+a: a string
+b: a string
 Input Format
 
-The first line contains  space-separated integers, , , and , describing the respective values in triplet . 
-The second line contains space-separated integers, , , and , describing the respective values in triplet .
+The first line contains a single string, . 
+The second line contains a single string, .
 
 Constraints
 
+The strings  and  consist of lowercase English alphabetic letters ascii[a-z].
 Output Format
 
-Return an array of two integers denoting the respective comparison points earned by Alice and Bob.
+Print a single integer denoting the number of characters you must delete to make the two strings anagrams of each other.
 
-Sample Input 0
+Sample Input
 
-5 6 7
-3 6 10
-Sample Output 0
+cde
+abc
+Sample Output
 
-1 1
-Explanation 0
+4
+Explanation
 
-In this example:
+We delete the following characters from our two strings to turn them into anagrams of each other:
 
-Now, let's compare each individual score:
-
-, so Alice receives  point.
-, so nobody receives a point.
-, so Bob receives  point.
-Alice's comparison score is , and Bob's comparison score is . Thus, we return the array .
-
-Sample Input 1
-
-17 28 30
-99 16 8
-Sample Output 1
-
-2 1
-Explanation 1
-
-Comparing the  elements,  so Bob receives a point. 
-Comparing the  and elements,  and  so Alice receives two points. 
-The return array is .
+Remove d and e from cde to get c.
+Remove a and b from abc to get c.
+We must delete  characters to make both strings anagrams, so we print  on a new line.
 
 */
