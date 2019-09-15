@@ -4,55 +4,20 @@
 |--------------------------------------------------
 */
 
-const answer = question([ 2, 6, 3, 4, 5 ], 2); 
+const answer = question(["abcd","dcba","lls","s","sssll"]); 
 
-function question (tickets, p) {
+function question (q) {
 
-	// let totalTime = 0;
-	// let currentArr = tickets;
-	// if (p > tickets.length){
-	// 	return null;
-	// }
-	// while (currentArr[p] !== 0) {
-	// 	for (let i = 0; i < currentArr.length; i++){
-	// 		if(currentArr[i] !== 0){
-	// 			currentArr[i] = currentArr[i] - 1
-	// 			totalTime++;
-	// 		}
-	// 		if(currentArr[p] === 0){
-	// 			break;
-	// 		}
-	// 	}
-	// 	console.log(currentArr)
-	// }
-
-	let totalTime = 0;
-	for (let i = 0; i < tickets.length; i++){
-		if (i === p){
-			totalTime += tickets[p]
-			console.log(totalTime)
-		}
-		if (tickets[i] <= tickets[p] && i < p){
-			totalTime += tickets[i];
-			console.log(totalTime)
-		}
-		if (tickets[i] > tickets[p] && i < p){
-			totalTime += tickets[p];
-			console.log(totalTime)
-		}
-		if (tickets[i] < tickets[p] && i > p){
-			totalTime += tickets[i];
-			console.log(totalTime)
-		}
-		if (tickets[i] >= tickets[p] && i > p){
-			totalTime += tickets[p] - 1;
-			console.log(totalTime)
+	let combined;
+	for (let i = 0; i < q.length; i++){
+		if (i < q.lenght -1){
+			combined = q[i].concat(q[i+1])
+			console.log(combined)
+		} else {
+			return;
 		}
 	}
-
-	
-
-	return totalTime
+	return combined
 
 }
 
@@ -62,16 +27,17 @@ console.log('**********************')
 
 
 /* QUESTION
-There are n people standing in line to buy show tickets.Due to high demand, the venue sells tickets according to the following rules:
+Given a list of unique words, find all pairs of distinct indices (i, j) in the given list, so that the concatenation of the two words, i.e. words[i] + words[j] is a palindrome.
 
-The person at the head of the line can buy exactly one ticket and must then exit the line.
-if a person needs to purchase additional tickets,they must re-enter the end of the line and wait to be sold their next ticket(assume exit and re-entry takes zero seconds).
-Each ticket sale takes exactly one second.
-We express initial line of n people as an array, tickets = [tickets0, tickets1 ... ticketsN-1], where ticketsi denotes the number of tickets person i wishes to buy. If Jesse is standing at a position p in this line, find out how much time it would take for him to buy all tickets. Complete the waiting time function in the editor below. It has two parameters:
+Example 1:
 
-An array, tickets, of n positive integers describing initial sequence of people standing in line. Each ticketsi describes number of tickets that a person waiting at initial place.
-An integer p, denoting Jesse's position in tickets.
+Input: ["abcd","dcba","lls","s","sssll"]
+Output: [[0,1],[1,0],[3,2],[2,4]] 
+Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
+Example 2:
 
-Sample Input 5 2 6 3 4 5 2 Sample Output 12 Sample Input 4 5 5 2 3 3 Sample Output 11
+Input: ["bat","tab","cat"]
+Output: [[0,1],[1,0]] 
+Explanation: The palindromes are ["battab","tabbat"]
 
 */
